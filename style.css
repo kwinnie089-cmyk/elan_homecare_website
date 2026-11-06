@@ -37,8 +37,10 @@ h1 span, h2 span { color: var(--teal); }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 18px; border: 0; border-radius: 5px; padding: 15px 23px; font: 700 14px "DM Sans", sans-serif; cursor: pointer; transition: .2s; }
 .button-primary { color: white; background: var(--teal); }
 .button-primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
-.button-whatsapp { color: white; background: #258a54; }
-.button-whatsapp:hover { background: #1d7044; transform: translateY(-2px); }
+.button-whatsapp { color: white; background: linear-gradient(120deg, #24a05a, #087f69); box-shadow: 0 5px 14px #087f6930; }
+.button-whatsapp:hover { background: linear-gradient(120deg, #1d8b4e, #066c5a); box-shadow: 0 7px 18px #087f6940; transform: translateY(-2px); }
+.button-whatsapp-option { color: #11633f; background: #e9f7ee; border: 1px solid #c1e6ce; justify-content: space-between; }
+.button-whatsapp-option:hover { background: #d7f0e0; }
 .button span { font-size: 19px; }
 .text-link { color: var(--navy); font-size: 14px; font-weight: 700; }
 .hero-note { margin-top: 34px; color: var(--muted); font-size: 13px; display: flex; gap: 10px; align-items: center; }
@@ -123,6 +125,13 @@ h2 { font-size: clamp(32px, 4vw, 45px); letter-spacing: -1.5px; color: var(--nav
 .contact-details a { display: flex; align-items: center; gap: 14px; color: var(--navy); font-weight: 600; }
 .contact-details small { display: block; color: var(--muted); font-size: 10px; font-weight: 500; }
 .contact-icon { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #e8f4f0; color: var(--teal); }
+.whatsapp-contact summary { display: flex; align-items: center; gap: 14px; color: var(--navy); font-weight: 600; cursor: pointer; list-style: none; }
+.whatsapp-contact summary::-webkit-details-marker { display: none; }
+.whatsapp-contact-options { display: grid; gap: 8px; margin: 10px 0 0 54px; }
+.whatsapp-contact-options a { color: #11633f; font-size: 13px; font-weight: 700; }
+.whatsapp-options { display: grid; gap: 10px; margin-top: 10px; }
+.whatsapp-options[hidden] { display: none; }
+.whatsapp-options button { margin-top: 0; }
 .enquiry-form { background: #f5f8f7; padding: 32px; border-radius: 8px; }
 .enquiry-form h3 { color: var(--navy); font-size: 23px; margin: 0 0 8px; }
 .enquiry-form p, .form-note { color: var(--muted); font-size: 12px; }

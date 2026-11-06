@@ -149,7 +149,19 @@ if (reviewForm) {
   });
 }
 
-document.getElementById("enquiryForm").addEventListener("submit", event => {
+const enquiryForm = document.getElementById("enquiryForm");
+const whatsappOptionsToggle = document.getElementById("whatsappOptionsToggle");
+const whatsappOptions = document.getElementById("whatsappOptions");
+
+whatsappOptionsToggle.addEventListener("click", () => {
+  if (!enquiryForm.reportValidity()) return;
+
+  whatsappOptions.hidden = false;
+  whatsappOptionsToggle.setAttribute("aria-expanded", "true");
+  whatsappOptions.querySelector("button").focus();
+});
+
+enquiryForm.addEventListener("submit", event => {
   event.preventDefault();
   const form = new FormData(event.currentTarget);
   const body = encodeURIComponent(

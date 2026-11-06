@@ -156,11 +156,18 @@ document.getElementById("enquiryForm").addEventListener("submit", event => {
     `Name: ${form.get("name")}\nPhone: ${form.get("phone")}\nService: ${form.get("service")}\nMessage: ${form.get("message") || "Not provided"}`
   );
 
+  const subject = "Website enquiry - Elan Homecare Nursing";
   if (event.submitter && event.submitter.value === "whatsapp") {
     window.open(`https://wa.me/256766028496?text=${body}`, "_blank", "noopener,noreferrer");
     return;
   }
 
-  const subject = encodeURIComponent("Website enquiry - Elan Homecare Nursing");
-  window.location.href = `mailto:elanhomenursing@gmail.com?subject=${subject}&body=${body}`;
+  const gmailParams = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to: "elanhomenursing@gmail.com",
+    su: subject,
+    body: decodeURIComponent(body)
+  });
+  window.open(`https://mail.google.com/mail/?${gmailParams}`, "_blank", "noopener,noreferrer");
 });

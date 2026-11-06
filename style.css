@@ -37,6 +37,8 @@ h1 span, h2 span { color: var(--teal); }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 18px; border: 0; border-radius: 5px; padding: 15px 23px; font: 700 14px "DM Sans", sans-serif; cursor: pointer; transition: .2s; }
 .button-primary { color: white; background: var(--teal); }
 .button-primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+.button-whatsapp { color: white; background: #258a54; }
+.button-whatsapp:hover { background: #1d7044; transform: translateY(-2px); }
 .button span { font-size: 19px; }
 .text-link { color: var(--navy); font-size: 14px; font-weight: 700; }
 .hero-note { margin-top: 34px; color: var(--muted); font-size: 13px; display: flex; gap: 10px; align-items: center; }

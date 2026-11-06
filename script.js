@@ -157,8 +157,13 @@ document.getElementById("enquiryForm").addEventListener("submit", event => {
   );
 
   const subject = "Website enquiry - Elan Homecare Nursing";
-  if (event.submitter && event.submitter.value === "whatsapp") {
-    window.open(`https://wa.me/256766028496?text=${body}`, "_blank", "noopener,noreferrer");
+  const whatsappNumbers = {
+    "whatsapp-256783063799": "256783063799",
+    "whatsapp-256779688091": "256779688091"
+  };
+  const whatsappNumber = event.submitter && whatsappNumbers[event.submitter.value];
+  if (whatsappNumber) {
+    window.open(`https://wa.me/${whatsappNumber}?text=${body}`, "_blank", "noopener,noreferrer");
     return;
   }
 

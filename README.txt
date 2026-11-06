@@ -30,7 +30,7 @@ IMPORTANT BEFORE PUBLISHING
 - Replace the sample stock photographs with client-approved images if available.
 - The email enquiry button opens a prefilled Gmail draft; WhatsApp lets
   visitors choose a number and opens a prefilled message. Neither option stores
-  submissions on this website.
+  submissions on this website. Enquiries include the visitor's location.
 - The form currently uses elanhomenursing@gmail.com.
 - This is a front-end starter. No patient records or sensitive health information
   should be collected through it.

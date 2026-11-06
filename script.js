@@ -165,7 +165,7 @@ enquiryForm.addEventListener("submit", event => {
   event.preventDefault();
   const form = new FormData(event.currentTarget);
   const body = encodeURIComponent(
-    `Name: ${form.get("name")}\nPhone: ${form.get("phone")}\nService: ${form.get("service")}\nMessage: ${form.get("message") || "Not provided"}`
+    `Name: ${form.get("name")}\nLocation: ${form.get("location")}\nPhone: ${form.get("phone")}\nService: ${form.get("service")}\nMessage: ${form.get("message") || "Not provided"}`
   );
 
   const subject = "Website enquiry - Elan Homecare Nursing";

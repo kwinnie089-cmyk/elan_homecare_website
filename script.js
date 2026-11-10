@@ -1,5 +1,65 @@
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
+const mainSections = Array.from(document.querySelector("main").children);
+const pageSections = {
+  home: ["home", "trust-strip"],
+  about: ["about"],
+  services: ["services"],
+  "why-us": ["why-us"],
+  reviews: ["reviews"],
+  contact: ["contact"]
+};
+
+const showPage = pageId => {
+  const visibleSections = pageSections[pageId] || pageSections.home;
+
+  mainSections.forEach(section => {
+    section.hidden = !visibleSections.includes(section.id || "trust-strip");
+  });
+
+  mainNav.querySelectorAll("a[href^='#']").forEach(link => {
+    if (link.hash.slice(1) === pageId) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+
+  window.scrollTo(0, 0);
+};
+
+const navigateToPage = pageId => {
+  if (!pageSections[pageId]) return;
+
+  const destination = `#${pageId}`;
+  if (window.location.hash !== destination) {
+    window.history.pushState({ pageId }, "", destination);
+  }
+  showPage(pageId);
+};
+
+document.querySelectorAll("a[href^='#']").forEach(link => {
+  link.addEventListener("click", event => {
+    const pageId = link.hash.slice(1);
+    if (!pageSections[pageId]) return;
+
+    event.preventDefault();
+    navigateToPage(pageId);
+
+    if (link.dataset.service) {
+      document.getElementById("service").value = link.dataset.service;
+    }
+  });
+});
+
+const showCurrentPage = () => {
+  const pageId = window.location.hash.slice(1);
+  showPage(pageSections[pageId] ? pageId : "home");
+};
+
+window.addEventListener("popstate", showCurrentPage);
+window.addEventListener("hashchange", showCurrentPage);
+showCurrentPage();
 
 menuToggle.addEventListener("click", () => {
   const isOpen = mainNav.classList.toggle("open");
@@ -43,110 +103,6 @@ if (pulsePaths.length && !reduceMotion.matches) {
   };
 
   window.requestAnimationFrame(drawPulse);
-}
-
-const reviewForm = document.getElementById("reviewForm");
-if (reviewForm) {
-  const reviewList = document.getElementById("reviewList");
-  const reviewStatus = document.getElementById("reviewStatus");
-  const ratingAverage = document.getElementById("ratingAverage");
-  const ratingStars = document.getElementById("ratingStars");
-  const ratingCount = document.getElementById("ratingCount");
-  const reviewStorageKey = "elan-homecare-reviews";
-  let reviews = [];
-  let storageAvailable = true;
-
-  try {
-    const savedReviews = window.localStorage.getItem(reviewStorageKey);
-    const parsedReviews = savedReviews ? JSON.parse(savedReviews) : [];
-    if (!Array.isArray(parsedReviews) || parsedReviews.some(review =>
-      typeof review.name !== "string" ||
-      typeof review.comment !== "string" ||
-      !Number.isInteger(review.rating) ||
-      review.rating < 1 ||
-      review.rating > 5 ||
-      typeof review.date !== "string"
-    )) {
-      throw new Error("Saved review data is invalid.");
-    }
-    reviews = parsedReviews;
-  } catch (error) {
-    storageAvailable = false;
-    reviewStatus.textContent = "Reviews could not be loaded from this browser. Please check your browser storage settings.";
-    reviewStatus.setAttribute("role", "alert");
-    reviewForm.querySelector('button[type="submit"]').disabled = true;
-  }
-
-  const renderReviews = () => {
-    const totalRating = reviews.reduce((total, review) => total + review.rating, 0);
-    const average = reviews.length ? totalRating / reviews.length : 0;
-    ratingAverage.textContent = reviews.length ? average.toFixed(1) : "—";
-    ratingStars.textContent = "★★★★★".slice(0, Math.round(average)).padEnd(5, "☆");
-    ratingCount.textContent = `${reviews.length} ${reviews.length === 1 ? "review" : "reviews"}`;
-    reviewList.replaceChildren();
-
-    if (!reviews.length) {
-      const emptyState = document.createElement("p");
-      emptyState.className = "review-empty";
-      emptyState.textContent = "Be the first to share your experience.";
-      reviewList.append(emptyState);
-      return;
-    }
-
-    reviews.forEach(review => {
-      const card = document.createElement("article");
-      card.className = "review-card";
-
-      const header = document.createElement("div");
-      header.className = "review-card-header";
-      const name = document.createElement("strong");
-      name.textContent = review.name;
-      const date = document.createElement("time");
-      date.dateTime = review.date;
-      date.textContent = new Date(review.date).toLocaleDateString();
-      header.append(name, date);
-
-      const stars = document.createElement("div");
-      stars.className = "review-card-stars";
-      stars.setAttribute("aria-label", `${review.rating} out of 5 stars`);
-      stars.textContent = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
-
-      const comment = document.createElement("p");
-      comment.textContent = review.comment;
-      card.append(header, stars, comment);
-      reviewList.append(card);
-    });
-  };
-
-  renderReviews();
-
-  reviewForm.addEventListener("submit", event => {
-    event.preventDefault();
-    if (!storageAvailable) return;
-
-    const formData = new FormData(reviewForm);
-    const newReview = {
-      name: formData.get("name").trim(),
-      rating: Number(formData.get("rating")),
-      comment: formData.get("comment").trim(),
-      date: new Date().toISOString()
-    };
-    const updatedReviews = [newReview, ...reviews];
-
-    try {
-      window.localStorage.setItem(reviewStorageKey, JSON.stringify(updatedReviews));
-    } catch (error) {
-      reviewStatus.textContent = "Your review could not be saved. Check your browser storage settings and try again.";
-      reviewStatus.setAttribute("role", "alert");
-      return;
-    }
-
-    reviews = updatedReviews;
-    renderReviews();
-    reviewForm.reset();
-    reviewStatus.removeAttribute("role");
-    reviewStatus.textContent = "Thank you. Your review was saved in this browser.";
-  });
 }
 
 const enquiryForm = document.getElementById("enquiryForm");

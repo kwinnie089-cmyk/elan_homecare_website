@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Private Reviews | Elan Homecare Nursing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-page">
+  <main class="admin-main">
+    <a class="admin-back" href="index.html">← Back to website</a>
+    <section class="admin-panel">
+      <p class="eyebrow">ELAN HOMECARE NURSING</p>
+      <h1>Private reviews</h1>
+      <p class="admin-intro">Sign in with the Elan admin account to view submitted reviews.</p>
+      <form class="admin-login" id="adminLogin">
+        <label for="adminEmail">Email</label>
+        <input id="adminEmail" name="email" type="email" autocomplete="username" required>
+        <label for="adminPassword">Password</label>
+        <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+        <button class="button button-primary" type="submit">Sign in</button>
+      </form>
+      <div class="admin-toolbar" id="adminToolbar" hidden>
+        <p id="adminIdentity"></p>
+        <button class="button button-secondary" id="refreshReviews" type="button">Refresh</button>
+        <button class="button button-secondary" id="adminSignOut" type="button">Sign out</button>
+      </div>
+      <p class="admin-status" id="adminStatus" role="status" aria-live="polite"></p>
+      <div class="admin-review-list" id="adminReviewList" aria-live="polite"></div>
+    </section>
+  </main>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

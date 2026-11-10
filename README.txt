@@ -32,5 +32,20 @@ IMPORTANT BEFORE PUBLISHING
   visitors choose a number and opens a prefilled message. Neither option stores
   submissions on this website. Enquiries include the visitor's location.
 - The form currently uses elanhomenursing@gmail.com.
+- Reviews are private and require a Supabase project. Follow "PRIVATE REVIEWS
+  SETUP" below before enabling review submissions or the admin dashboard.
 - This is a front-end starter. No patient records or sensitive health information
   should be collected through it.
+
+PRIVATE REVIEWS SETUP
+1. Create a Supabase project at https://supabase.com/dashboard.
+2. In SQL Editor, run supabase/schema.sql. The policy lets anyone submit a
+   review but only an authenticated user with the Elan admin email can view them.
+3. In Authentication > Users, create an admin user for elanhomenursing@gmail.com
+   and set a strong password. Do not put that password in this repository.
+4. In Project Settings > API, copy the Project URL and publishable (or anon)
+   key into supabase-config.js. This key is intended for browser use; never use
+   the service-role key in the website. Save and push the config change.
+5. Deploy the site, then open /admin.html and sign in with the admin account.
+6. Reviews submitted before this setup were stored in individual browsers and
+   cannot be moved into the shared dashboard automatically.

@@ -55,9 +55,9 @@ h1 span, h2 span { color: var(--teal); }
 .pathways-panel h2 { font-size: clamp(26px, 3vw, 35px); letter-spacing: -1px; margin: 25px 0 8px; }
 .pathways-panel > p { color: var(--muted); font-size: 13px; margin: 0; }
 .pathway-links { display: grid; gap: 10px; margin-top: 23px; }
-.pathway-link { display: grid; grid-template-columns: 42px 1fr 18px; align-items: center; gap: 13px; padding: 13px; border: 1px solid #e6eeeb; border-radius: 7px; transition: background .2s, border-color .2s, transform .2s; }
+.pathway-link { display: grid; grid-template-columns: 82px 1fr 18px; align-items: center; gap: 14px; padding: 10px; border: 1px solid #e6eeeb; border-radius: 7px; transition: background .2s, border-color .2s, transform .2s; }
 .pathway-link:hover { background: #f5faf8; border-color: #b6d8cf; transform: translateX(3px); }
-.pathway-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 6px; background: #e8f4f0; color: var(--teal); font-size: 19px; }
+.pathway-image { width: 82px; height: 66px; object-fit: cover; border-radius: 5px; }
 .pathway-link strong, .pathway-link small { display: block; }
 .pathway-link strong { color: var(--navy); font-size: 13px; }
 .pathway-link small { color: var(--muted); font-size: 11px; }
@@ -222,8 +222,8 @@ h2 { font-size: clamp(32px, 4vw, 45px); letter-spacing: -1.5px; color: var(--nav
   h1 { font-size: 43px; }
   .hero-intro { font-size: 15px; }
   .pathways-panel { padding: 25px 20px; }
-  .pathway-link { grid-template-columns: 38px 1fr 16px; gap: 10px; padding: 11px; }
-  .pathway-icon { width: 38px; height: 38px; }
+  .pathway-link { grid-template-columns: 66px 1fr 16px; gap: 10px; padding: 9px; }
+  .pathway-image { width: 66px; height: 58px; }
   .trust-strip { align-items: flex-start; flex-direction: column; padding: 22px 8%; }
   .section-image img { height: 310px; }
   .service-grid { grid-template-columns: 1fr; }

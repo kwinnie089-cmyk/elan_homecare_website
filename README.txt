@@ -4,6 +4,7 @@ Files:
 - index.html: page content and structure
 - style.css: colours, layout and responsive design
 - script.js: mobile menu and enquiry form behaviour
+- assets/: locally stored care photos used throughout the website
 
 OPEN IN VS CODE
 1. Extract the ZIP file.
@@ -27,7 +28,8 @@ PUBLISH WITH GITHUB PAGES
 IMPORTANT BEFORE PUBLISHING
 - Confirm that the three telephone numbers and email address are correct.
 - Confirm the service descriptions and approve all wording with the client.
-- Replace the sample stock photographs with client-approved images if available.
+- The website uses stock care photographs in assets/. Replace them with
+  client-approved images if available.
 - The email enquiry button opens a prefilled Gmail draft; WhatsApp lets
   visitors choose a number and opens a prefilled message. Neither option stores
   submissions on this website. Enquiries include the visitor's location.

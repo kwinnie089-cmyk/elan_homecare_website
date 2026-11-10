@@ -29,8 +29,9 @@ jobs:
           enablement: true
       - name: Prepare website files
         run: |
-          mkdir _site
+          mkdir -p _site/assets
           cp index.html admin.html style.css script.js reviews.js admin.js supabase-config.js _site/
+          cp assets/*.jpg _site/assets/
       - name: Upload website files
         uses: actions/upload-pages-artifact@v3
         with:
